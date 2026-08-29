@@ -65,6 +65,14 @@ def getingredients(soup):
             all_ingredients.append(item)
             ingtitle.attrs={}
             recipe.attrs={}
+    if soup.find("span", class_="ingredient_heading") is None:
+        recipe = soup.find("span", class_="itr-ingredients")
+        all_texts = [p.text.strip() for p in recipe.find_all('p')]
+        ingredients_list = getlist(all_texts)
+        itemname = soup.find("h1", class_="headline").text.strip()
+        item = Ingredients(itemname, ingredients_list)
+        all_ingredients.append(item)
+
     return all_ingredients
 
 

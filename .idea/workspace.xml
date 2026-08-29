@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="ingredient list object and support for one website">
-      <change afterPath="$PROJECT_DIR$/inspired_taste.py" afterDir="false" />
+    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="support for more than one list of ingredients&#10;for inspirtedtaste.com">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inspiredTaste.py" beforeDir="false" afterPath="$PROJECT_DIR$/type_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspired_taste.py" beforeDir="false" afterPath="$PROJECT_DIR$/inspired_taste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,11 +105,20 @@
       <option name="project" value="LOCAL" />
       <updated>1788008877661</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="support for more than one list of ingredients&#10;for inspirtedtaste.com">
+      <option name="closed" value="true" />
+      <created>1788010633358</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1788010633358</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ingredient list object and support for one website" />
-    <option name="LAST_COMMIT_MESSAGE" value="ingredient list object and support for one website" />
+    <MESSAGE value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
+    <option name="LAST_COMMIT_MESSAGE" value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
   </component>
 </project>
