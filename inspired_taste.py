@@ -1,4 +1,4 @@
-from type_utils import RecipeItem, units, Ingredients
+from type_utils import RecipeItem, units, Ingredients, Directions, Tip
 import unicodedata
 def getlist(all_texts):
     Recipe= []
@@ -65,7 +65,7 @@ def getingredients(soup):
             all_ingredients.append(item)
             ingtitle.attrs={}
             recipe.attrs={}
-    if soup.find("span", class_="ingredient_heading") is None:
+    else:
         recipe = soup.find("span", class_="itr-ingredients")
         all_texts = [p.text.strip() for p in recipe.find_all('p')]
         ingredients_list = getlist(all_texts)
@@ -75,6 +75,60 @@ def getingredients(soup):
 
     return all_ingredients
 
+def get_directions(soup):
+    directions = []
+    if  soup.find("li",class_="itr-step") :
+        while soup.find("li",class_="itr-step"):
+            directs = soup.find("span", class_="itr-directions")
+            titles = soup.find("li",class_="itr-step")
+            if titles is None:
+                break
+            alldirections = [d.text.strip() for d in directs.find_all('p')]
+            alldirections = [d[1:] for d in alldirections]
+            dirname = titles.text
+            print(dirname,"dirname")
+
+            item = Directions(alldirections,dirname)
+            directions.append(item)
+            titles.attrs={}
+            directs.decompose()
+
+
+    else:
+        directs = soup.find("span", class_="itr-directions")
+        alldirections = [d.text.strip() for d in directs.find_all('p')]
+        # alldirections = [d[:1] + ". " + d[1:] for d in alldirections]
+        alldirections = [d[1:] for d in alldirections]
+        item = Directions(alldirections)
+        directions.append(item)
+
+    return directions
+    #The above method requires creating a new list before overwriting the old one, this method only modifies the current list but is slower
+    # for i, d in enumerate(alldirections):
+    #     alldirections[i] = d[:1] + ". " + d[1:]
+
+def get_tips(tips):
+    alltips = []
+    tip = tips.find_all("li")
+    for t in tip:
+        if  t.find("strong") :
+            strong = t.find("strong")
+            item = Tip(strong.next_sibling,strong.text)
+        else:
+            item = Tip(t.text)
+        alltips.append(item)
+    return alltips
+
+def get_recipe_from_inspired_taste(soup):
+
+    ingredientsblock = soup.find("div", class_="itr-ingredients")
+    ingredients = getingredients(ingredientsblock)
+
+    directionsblock = soup.find("div",class_ ="itr-directions")
+    directions = get_directions(directionsblock)
+
+    tipsblock = soup.find("div",class_="itr-notes")
+    tips = get_tips(tipsblock)
 
 
 

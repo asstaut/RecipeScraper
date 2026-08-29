@@ -1,15 +1,5 @@
 units = ["teaspoon", "tablespoon", "cup","g", "teaspoons", "tablespoons", "cups", "ml"]
 class RecipeItem:
-    def __init__(self, name, quantity, unit, secondary_quantity,secondary_unit):
-        self.name = name
-        self.quantity = quantity
-        self.unit = unit
-        self.weight = None
-        self.secondary_unit = secondary_unit
-        self.secondary_quantity = secondary_quantity
-        self.weightUnit= None
-        self.secondaryWeightunit= None
-        self.secondaryWeight = None
     def __init__(self):
         self.name = ""
         self.quantity = None
@@ -39,3 +29,26 @@ class Ingredients:
         print(self.title)
         for ingredient in self.ingredients:
             ingredient.print()
+
+class Directions:
+    def __init__(self,instructions,title = None):
+        self.instructions = instructions
+        self.title = title
+    def print(self):
+        print(self.title)
+        for instruction in self.instructions:
+            print(instruction)
+
+class Tips:
+    def __init__(self,tips):
+        self.tips = tips
+
+class Tip:
+    def __init__(self,tip,title=None):
+        self.tip = tip
+        self.title = title
+    def print(self):
+        if self.title is not None:
+            print(self.title)
+        print(self.tip)
+

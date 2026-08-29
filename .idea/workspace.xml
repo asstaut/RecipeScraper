@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="support for more than one list of ingredients&#10;for inspirtedtaste.com">
+    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="fixed bug &#10;(would not add list for lists with no sub heading)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inspired_taste.py" beforeDir="false" afterPath="$PROJECT_DIR$/inspired_taste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/type_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/type_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,12 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1788010633358</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed bug &#10;(would not add list for lists with no sub heading)">
+      <option name="closed" value="true" />
+      <created>1788010877067</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1788010877067</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ingredient list object and support for one website" />
     <MESSAGE value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
-    <option name="LAST_COMMIT_MESSAGE" value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
+    <MESSAGE value="fixed bug &#10;(would not add list for lists with no sub heading)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug &#10;(would not add list for lists with no sub heading)" />
   </component>
 </project>
