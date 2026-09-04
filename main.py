@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import re
 Recipe = []
 
+from bread_dad import *
 
 
 URL = "https://realpython.github.io/fake-jobs/"
@@ -11,6 +12,7 @@ URL = "https://breaddad.com/easy-banana-bread-recipe/"
 URL = "https://www.inspiredtaste.net/24412/cocoa-brownies-recipe/"
 URL = "https://www.inspiredtaste.net/100913/lemon-blueberry-bread-recipe/"
 URL = "https://www.inspiredtaste.net/19313/easy-focaccia-bread-recipe-with-herbs/"
+URL = "https://breaddad.com/easy-banana-bread-recipe/"
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -18,11 +20,13 @@ headers = {
 page = requests.get(URL, headers=headers)
 
 
-soup = BeautifulSoup(page.content, "html.parser")
-items = get_tips(soup)
+get_recipe(URL)
 
-for item in items:
-    item.print()
+soup = BeautifulSoup(page.content, "html.parser")
+# items = get_tips(soup)
+#
+# for item in items:
+#     item.print()
 
 
 

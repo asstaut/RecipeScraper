@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="fixed bug &#10;(would not add list for lists with no sub heading)">
+    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="-Added tips&#10;-Combined all functions in one block">
+      <change afterPath="$PROJECT_DIR$/bread_dad.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inspired_taste.py" beforeDir="false" afterPath="$PROJECT_DIR$/inspired_taste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/type_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/type_utils.py" afterDir="false" />
     </list>
@@ -46,6 +46,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.bread_dad.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -53,7 +54,30 @@
     "git-widget-placeholder": "main"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.bread_dad">
+    <configuration name="bread_dad" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RecipeScraper" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bread_dad.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RecipeScraper" />
       <option name="ENV_FILES" value="" />
@@ -79,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bread_dad" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -122,13 +147,22 @@
       <option name="project" value="LOCAL" />
       <updated>1788010877067</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="-Added tips&#10;-Combined all functions in one block">
+      <option name="closed" value="true" />
+      <created>1788020741529</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1788020741529</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ingredient list object and support for one website" />
     <MESSAGE value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
     <MESSAGE value="fixed bug &#10;(would not add list for lists with no sub heading)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug &#10;(would not add list for lists with no sub heading)" />
+    <MESSAGE value="-Added tips&#10;-Combined all functions in one block" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added tips&#10;-Combined all functions in one block" />
   </component>
 </project>

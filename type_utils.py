@@ -1,9 +1,9 @@
-units = ["teaspoon", "tablespoon", "cup","g", "teaspoons", "tablespoons", "cups", "ml"]
+units = ["teaspoon", "tablespoon", "cup","g", "teaspoons", "tablespoons", "cups", "ml","grams"]
 class RecipeItem:
     def __init__(self):
         self.name = ""
         self.quantity = None
-        self.unit = None
+        self.unit = ""
         self.weight = None
         self.secondary_unit = None
         self.secondary_quantity =None
@@ -52,3 +52,13 @@ class Tip:
             print(self.title)
         print(self.tip)
 
+class Recipe:
+    def __init__(self,name,ingredients):
+        self.name = name
+        self.ingredients = ingredients
+
+def get_individual_words(s):
+    words = []
+    for word in s.split(" "):
+        words.append(word)
+    return words
