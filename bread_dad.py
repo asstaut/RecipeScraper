@@ -1,7 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from type_utils import get_individual_words, Ingredients, RecipeItem,Directions
+from type_utils import Ingredients, RecipeItem,Directions
+from lowest_common_item import *
 import re
 import unicodedata
 def get_ingredients(ingredients_list,title):

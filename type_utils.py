@@ -1,3 +1,4 @@
+
 units = ["teaspoon", "tablespoon", "cup","g", "teaspoons", "tablespoons", "cups", "ml","grams"]
 class RecipeItem:
     def __init__(self):
@@ -11,7 +12,6 @@ class RecipeItem:
         self.secondaryWeightunit = None
         self.secondaryWeight = None
     def print(self):
-
         print(self.quantity, self.unit, end=" ")
         if not self.secondary_quantity is None:
             print(self.secondary_quantity,self.secondary_unit, end=" ")
@@ -22,26 +22,30 @@ class RecipeItem:
         print(self.name)
 
 class Ingredients:
-    def __init__(self,name,ingredients):
+    def __init__(self,ingredients,name = "Ingredients"):
         self.title = name
         self.ingredients = ingredients
     def print(self):
         print(self.title)
-        for ingredient in self.ingredients:
-            ingredient.print()
+        for i in range(0,len(self.ingredients)):
+            print(i+1,end=". ")
+            self.ingredients[i].print()
 
 class Directions:
-    def __init__(self,instructions,title = None):
+    def __init__(self,instructions,title = "Instructions"):
         self.instructions = instructions
         self.title = title
     def print(self):
         print(self.title)
-        for instruction in self.instructions:
-            print(instruction)
+        for i in range(0,len(self.instructions)):
+            print(i+1, ". ", self.instructions[i])
 
 class Tips:
     def __init__(self,tips):
         self.tips = tips
+    def print(self):
+        for tip in self.tips:
+            tip.print()
 
 class Tip:
     def __init__(self,tip,title=None):
@@ -53,12 +57,19 @@ class Tip:
         print(self.tip)
 
 class Recipe:
-    def __init__(self,name,ingredients):
+    def __init__(self,name,ingredients,directions,URL,tips = None):
+        self.URL = URL
         self.name = name
-        self.ingredients = ingredients
+        self.tips = tips
+        self.ingredients = ingredients #array of ingredients
+        self.directions = directions #list of directions
+    def print(self):
+        print(self.name)
+        for ingredient_list in self.ingredients:
+            ingredient_list.print()
+        for  direction_list in self.directions:
+            direction_list.print()
+        if self.tips:
+            print("Tips:")
+            self.tips.print()
 
-def get_individual_words(s):
-    words = []
-    for word in s.split(" "):
-        words.append(word)
-    return words

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="-Added tips&#10;-Combined all functions in one block">
-      <change afterPath="$PROJECT_DIR$/bread_dad.py" afterDir="false" />
+    <list default="true" id="f41742e5-0ac3-48df-82d9-d8322dc3e681" name="Changes" comment="-Added &quot;support&quot; for breaddad for directions and ingredients">
+      <change afterPath="$PROJECT_DIR$/lowest_common_item.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bread_dad.py" beforeDir="false" afterPath="$PROJECT_DIR$/bread_dad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspired_taste.py" beforeDir="false" afterPath="$PROJECT_DIR$/inspired_taste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/type_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/type_utils.py" afterDir="false" />
     </list>
@@ -54,7 +56,7 @@
     "git-widget-placeholder": "main"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.bread_dad">
+  <component name="RunManager" selected="Python.main">
     <configuration name="bread_dad" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RecipeScraper" />
       <option name="ENV_FILES" value="" />
@@ -103,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.bread_dad" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.bread_dad" />
       </list>
     </recent_temporary>
   </component>
@@ -155,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788020741529</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-Added &quot;support&quot; for breaddad for directions and ingredients">
+      <option name="closed" value="true" />
+      <created>1788532182138</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788532182138</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,6 +173,7 @@
     <MESSAGE value="support for more than one list of ingredients&#10;for inspirtedtaste.com" />
     <MESSAGE value="fixed bug &#10;(would not add list for lists with no sub heading)" />
     <MESSAGE value="-Added tips&#10;-Combined all functions in one block" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added tips&#10;-Combined all functions in one block" />
+    <MESSAGE value="-Added &quot;support&quot; for breaddad for directions and ingredients" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added &quot;support&quot; for breaddad for directions and ingredients" />
   </component>
 </project>

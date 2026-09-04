@@ -1,12 +1,19 @@
-from type_utils import RecipeItem, units, Ingredients, Directions, Tip
+from type_utils import RecipeItem, units, Ingredients, Directions, Tip,Recipe,Tips
 import unicodedata
+import requests
+from bs4 import BeautifulSoup
+from lowest_common_item import get_new_measurements
+
 def getlist(all_texts):
     Recipe= []
     for text in all_texts:
         words = text.split()
         item =  RecipeItem()
         lastunit =0
+        orflag = False
         for i in range(0,len(words)):
+            if words[i] == "or":
+                orflag = True
             if words[i] in units:
                 if lastunit ==0 :
                     item.unit = words[i]
@@ -18,6 +25,8 @@ def getlist(all_texts):
                     else:
                         item.quantity= round(unicodedata.numeric(words[i-1]),2)
                 else:
+                    if orflag:
+                        continue
                     item.secondary_unit = words[i]
                     lastunit = i
                     if words[i - 1].isdigit():
@@ -27,8 +36,14 @@ def getlist(all_texts):
                     else:
                         item.quantity = unicodedata.numeric(words[i - 1])
         if item.quantity is None:
-            item.quantity = int(words[lastunit])
-            item.unit = ""
+            if words[lastunit].isdigit():
+                item.quantity = int(words[lastunit])
+                item.unit = ""
+            else:
+                item.quantity = 0
+                item.name+= "Optional-"
+                item.unit = ""
+
         for i in range(lastunit+1,len(words)):
             item.name += words[i].capitalize()
             item.name +=" "
@@ -52,7 +67,7 @@ def getlist(all_texts):
         Recipe.append(item)
     return Recipe
 
-def getingredients(soup):
+def getingredients(soup,title):
     all_ingredients = []
     if not soup.find("span",class_="ingredient_heading") is None:
         while not soup.find("span",class_="ingredient_heading") is None:
@@ -61,7 +76,7 @@ def getingredients(soup):
             all_texts = [p.text.strip() for p in recipe.find_all('p')]
             ingredients_list = getlist(all_texts)
             itemname = ingtitle.text
-            item = Ingredients(itemname,ingredients_list)
+            item = Ingredients(ingredients_list,itemname)
             all_ingredients.append(item)
             ingtitle.attrs={}
             recipe.attrs={}
@@ -69,8 +84,7 @@ def getingredients(soup):
         recipe = soup.find("span", class_="itr-ingredients")
         all_texts = [p.text.strip() for p in recipe.find_all('p')]
         ingredients_list = getlist(all_texts)
-        itemname = soup.find("h1", class_="headline").text.strip()
-        item = Ingredients(itemname, ingredients_list)
+        item = Ingredients(ingredients_list)
         all_ingredients.append(item)
 
     return all_ingredients
@@ -92,8 +106,6 @@ def get_directions(soup):
             directions.append(item)
             titles.attrs={}
             directs.decompose()
-
-
     else:
         directs = soup.find("span", class_="itr-directions")
         alldirections = [d.text.strip() for d in directs.find_all('p')]
@@ -119,16 +131,33 @@ def get_tips(tips):
         alltips.append(item)
     return alltips
 
-def get_recipe_from_inspired_taste(soup):
+def get_recipe_from_inspired_taste(URL):
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+    page = requests.get(URL, headers=headers)
+
+    soup = BeautifulSoup(page.content, "html.parser")
+
+    title = soup.find("h1", class_="headline").text.strip()
 
     ingredientsblock = soup.find("div", class_="itr-ingredients")
-    ingredients = getingredients(ingredientsblock)
+    ingredients = getingredients(ingredientsblock,title)
 
     directionsblock = soup.find("div",class_ ="itr-directions")
     directions = get_directions(directionsblock)
 
     tipsblock = soup.find("div",class_="itr-notes")
-    tips = get_tips(tipsblock)
+    tips = Tips(get_tips(tipsblock))
+#    def __init__(self,name,ingredients,directions,URL):
+
+    Recipe_For_URL = Recipe(title,ingredients,directions,URL,tips)
+    Recipe_For_URL.print()
+
+    get_new_measurements(Recipe_For_URL)
+
+
 
 
 

@@ -4,25 +4,25 @@ from bs4 import BeautifulSoup
 import re
 Recipe = []
 
-from bread_dad import *
-
+from inspired_taste import *
 
 URL = "https://realpython.github.io/fake-jobs/"
 URL = "https://breaddad.com/easy-banana-bread-recipe/"
 URL = "https://www.inspiredtaste.net/24412/cocoa-brownies-recipe/"
-URL = "https://www.inspiredtaste.net/100913/lemon-blueberry-bread-recipe/"
-URL = "https://www.inspiredtaste.net/19313/easy-focaccia-bread-recipe-with-herbs/"
-URL = "https://breaddad.com/easy-banana-bread-recipe/"
+# URL = "https://www.inspiredtaste.net/100913/lemon-blueberry-bread-recipe/"
+# URL = "https://www.inspiredtaste.net/19313/easy-focaccia-bread-recipe-with-herbs/"
+# URL = "https://www.inspiredtaste.net/105539/ham-and-cheese-sliders/"
+# URL = "https://breaddad.com/easy-banana-bread-recipe/"
+#
+# headers = {
+#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+# }
+# page = requests.get(URL, headers=headers)
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-}
-page = requests.get(URL, headers=headers)
 
+get_recipe_from_inspired_taste(URL)
 
-get_recipe(URL)
-
-soup = BeautifulSoup(page.content, "html.parser")
+# soup = BeautifulSoup(page.content, "html.parser")
 # items = get_tips(soup)
 #
 # for item in items:
