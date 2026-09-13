@@ -1,10 +1,8 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from type_utils import Ingredients, RecipeItem,Directions,Recipe
-from lowest_common_item import *
-import re
-import unicodedata
+from utils.type_utils import Ingredients, RecipeItem,Directions,Recipe
+
+
 def get_ingredients(ingredients_list,title):
     list_of_ingredients = ingredients_list.find_all("li")
     all_ingredients = []
