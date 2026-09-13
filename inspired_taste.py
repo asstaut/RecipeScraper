@@ -29,12 +29,22 @@ def getlist(all_texts):
                         continue
                     item.secondary_unit = words[i]
                     lastunit = i
-                    if words[i - 1].isdigit():
-                        item.quantity = int(words[i - 1])
-                    elif words[i - 2].isdigit():
-                        item.quantity = int(words[i - 2]) + unicodedata.numeric(words[i - 1])
+                    if item.quantity is None:
+                        if words[i - 1].isdigit():
+                            item.quantity = int(words[i - 1])
+                        elif words[i - 2].isdigit():
+                            item.quantity = int(words[i - 2]) + unicodedata.numeric(words[i - 1])
+                        else:
+                            item.quantity = unicodedata.numeric(words[i - 1])
                     else:
-                        item.quantity = unicodedata.numeric(words[i - 1])
+                        if words[i - 1].isdigit():
+                            item.secondary_quantity = int(words[i - 1])
+                        elif words[i - 2].isdigit():
+                            item.secondary_quantity = int(words[i - 2]) + unicodedata.numeric(words[i - 1])
+                        else:
+                            item.secondary_quantity = unicodedata.numeric(words[i - 1])
+                        item.secondary_unit = words[i]
+
         if item.quantity is None:
             if words[lastunit].isdigit():
                 item.quantity = int(words[lastunit])
@@ -153,10 +163,7 @@ def get_recipe_from_inspired_taste(URL):
 #    def __init__(self,name,ingredients,directions,URL):
 
     Recipe_For_URL = Recipe(title,ingredients,directions,URL,tips)
-    Recipe_For_URL.print()
-
-    get_new_measurements(Recipe_For_URL)
-
+    return Recipe_For_URL
 
 
 

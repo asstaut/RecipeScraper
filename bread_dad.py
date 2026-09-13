@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from type_utils import Ingredients, RecipeItem,Directions
+from type_utils import Ingredients, RecipeItem,Directions,Recipe
 from lowest_common_item import *
 import re
 import unicodedata
@@ -10,26 +10,25 @@ def get_ingredients(ingredients_list,title):
     all_ingredients = []
     for l in list_of_ingredients:
         all_ingredients.append(process_ingredients_line(l))
-    item = Ingredients(title,all_ingredients)
+    item = Ingredients(all_ingredients,title)
     return item
 
-def get_directions(directions_list):
+def get_directions(directions_list,soup):
     all_directions = []
-  #  dir = soup.find_all("div", class_="wprm-recipe-instruction-group")
     while soup.find("div", class_="wprm-recipe-instruction-group"):
         dir = soup.find("div", class_="wprm-recipe-instruction-group")
         dirlist = dir.find_all("li")
         directions_title = dir.find("h4")
         instruction = []
-        print(directions_title)
+        # print(directions_title)
         for l in dirlist:
             instruction.append(l.text)
         if directions_title is None:
             item = Directions(instruction)
         else :
             item = Directions(instruction,directions_title.text)
+            directions_title.decompose()
         dir.attrs = {}
-        directions_title.decompose()
         all_directions.append(item)
 
     return all_directions
@@ -38,14 +37,23 @@ def process_ingredients_line(line):
     words = line.text.split("–")
     start = 0
     item = RecipeItem()
-    if words[0] == "Optional":
+
+    lim = len(words)
+    if words[0].strip() == "Optional":
         start = 1
-    for i in range(start,start+3):
+    for i in range(start,lim):
         word = words[i].strip()
         letters = word.split(" ")
         if i == start:
+            if len(letters) == 1:
+                item.quantity = int(letters[0])
+
             if len(letters) == 2:
-                item.quantity = int(letters[0].strip())
+                letters[0]= letters[0].strip()
+                try:
+                    item.quantity = int(letters[0])
+                except ValueError:
+                    item.quantity = round(int(letters[0][0]) / int(letters[0][2]), 2)
                 if item.unit is not None:
                     item.unit = letters[1]
             if len(letters) == 3:
@@ -61,31 +69,23 @@ def process_ingredients_line(line):
         if i == start + 2:
             item.weight = float(letters[0])
             item.weightUnit = letters[1]
-    item.print()
+    # item.print()
+    return item
 
 
 
-def get_recipe(link):
+def get_recipe_from_bread_dad(link):
     driver = webdriver.Firefox()
     driver.get(link)
-    block = driver.find_elements(By.CLASS_NAME,"wp-block-list")
-    print(block)
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    all_ul_lists = soup.find_all("ul", class_="wp-block-list")
+    inglist = all_ul_lists[0]
+    dirlist = soup.find_all("div", class_="wprm-recipe-instruction-group")
+    directions = get_directions(dirlist,soup)
+    title = soup.find("h1", class_="entry-title").text.strip()
+    all_ing =[get_ingredients(inglist,title)]
+    recipe_from_link = Recipe(title,all_ing,directions,link)
+    # print(recipe_from_link)
+    driver.quit()
+    return recipe_from_link
 
-def ingredients(ingredients_list):
-    all_ingredients = []
-    inglist = [d.text.strip() for d in ingredients_list.find_all('li')]
-    print(inglist)
-
-URL = "https://breaddad.com/easy-banana-bread-recipe/"
-URL = "https://breaddad.com/easy-bread-machine-bagels/"
-
-driver = webdriver.Firefox()
-driver.get(URL)
-block = driver.find_elements(By.CLASS_NAME,"wp-block-list")
-soup = BeautifulSoup(driver.page_source, "html.parser")
-all_ul_lists = soup.find_all("ul", class_="wp-block-list")
-inglist = all_ul_lists[0]
-title = soup.find("h1", class_= "entry-title").text.strip()
-
-
-driver.quit()

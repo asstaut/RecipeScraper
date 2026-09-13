@@ -1,5 +1,6 @@
 
 units = ["teaspoon", "tablespoon", "cup","g", "teaspoons", "tablespoons", "cups", "ml","grams"]
+sites = ["breaddad","inspiredtaste"]
 class RecipeItem:
     def __init__(self):
         self.name = ""
@@ -61,7 +62,7 @@ class Recipe:
         self.URL = URL
         self.name = name
         self.tips = tips
-        self.ingredients = ingredients #array of ingredients
+        self.ingredients = ingredients #array of array of  recipe list
         self.directions = directions #list of directions
     def print(self):
         print(self.name)
@@ -73,3 +74,15 @@ class Recipe:
             print("Tips:")
             self.tips.print()
 
+tablespoon_conversion={
+    "teaspoon" : 3,
+    "cup": 0.0625
+}
+teaspoon_conversion={
+    "tablespoon" : 0.3333,
+    "cup" : 0.02083
+}
+cup_conversion={
+    "teaspoon" : 16,
+    "tablespoon" : 48,
+}
